@@ -1,10 +1,26 @@
-import React from "react";
+import React, {useState, useEffect}from "react";
 import MoreButton from "./MoreButton";
+import Sushi from "./Sushi";
 
-function SushiContainer(props) {
+
+
+function SushiContainer({API}) {
+const [sushiList, setSushiList] = useState([])
+
+  useEffect(()=>{
+    fetch(API)
+    .then(res=>res.json())
+    .then(data=>setSushiList(data))
+    },[]
+    )
+
   return (
     <div className="belt">
-      {/* Render Sushi components here! */}
+      {sushiList.map((index=>{
+        return (
+          <Sushi key={index.id} data={index}/>
+        )
+      }))}
       <MoreButton />
     </div>
   );
