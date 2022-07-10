@@ -14,14 +14,24 @@ console.log('in table', plates)
 let tallyDollarAmount = plates.reduce((a,b)=>a+b,0);
 
 console.log (tallyDollarAmount)
-let creditRemaining = 150
+let creditRemaining=150
+
+function creditBalance () {
+  
+  if (creditRemaining-tallyDollarAmount>0){
+  creditRemaining=creditRemaining - tallyDollarAmount;
+  return creditRemaining
+}
+else creditRemaining= 0;}
+
+creditBalance(creditRemaining);
 
 
 
   return (
     <>
       <h1 className="remaining">
-        You have: ${creditRemaining-tallyDollarAmount} remaining!
+        You have: ${creditRemaining} remaining!
       </h1>
       <div className="table">
         <div className="stack">{emptyPlates}</div>
