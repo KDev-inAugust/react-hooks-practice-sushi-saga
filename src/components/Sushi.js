@@ -1,11 +1,15 @@
 import React, {useState} from "react";
 
-function Sushi({data, handleSale}) {
+function Sushi({data, handleSale, allowPurchase}) {
 const [eatenSushi, setEaten] = useState(true)
 
-  
+console.log('allowpurchase in sushi',allowPurchase)
+
+
   function handlePlateClick(e){
     
+    if (allowPurchase===true){
+
     if (eatenSushi === false){
 
       console.log('nothing')
@@ -14,7 +18,7 @@ const [eatenSushi, setEaten] = useState(true)
       setEaten(false);
     handleSale(data.price);
     }
-    
+  }
   }
 
 const {id, name, img_url, price, created_at}=data

@@ -1,6 +1,6 @@
-import React ,{useState} from "react";
+import React from "react";
 
-function Table({ plates = [] }) {
+function Table({ plates = [], creditRemaining}) {
   
 
   // renders an empty plate for every element in the array
@@ -9,12 +9,10 @@ function Table({ plates = [] }) {
   ));
 
   //-------subtract the price of yummy sushi eaten from credit
-console.log('in table', plates)
+console.log('plates in table', plates)
 
 let tallyDollarAmount = plates.reduce((a,b)=>a+b,0);
 
-console.log (tallyDollarAmount)
-let creditRemaining=150
 
 function creditBalance () {
   
@@ -24,7 +22,8 @@ function creditBalance () {
 }
 else creditRemaining= 0;}
 
-creditBalance(creditRemaining);
+creditBalance();
+
 
 
 
