@@ -10,35 +10,18 @@ const [index, setIndex] = useState(0);
 const [sliceEnd, setSliceEnd] = useState(4);
 
 
-  
-
   useEffect(()=>{
     fetch(API)
     .then(res=>res.json())
     .then(data=>setSushiList(data.slice(index, sliceEnd)))
 
-    },[]
+    },[index]
     )
-
-    //------full array of sushi elements
-
-
-//--------limits diplayed elements to 4
-let sliceSize=4;
-let indexStart=0;
-let sushiToDisplay=[...sushiList]
-
-
-
 
 
 function handleShowMoreSushi(){
-  setIndex(()=>index+1);
-  setSliceEnd(()=>sliceEnd+1);
-  fetch(API)
-    .then(res=>res.json())
-    .then(data=>setSushiList(data.slice(index, sliceEnd)))
-  
+  setIndex(index+1);
+  setSliceEnd(sliceEnd+1);
 }
 
 
