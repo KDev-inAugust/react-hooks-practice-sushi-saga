@@ -6,36 +6,50 @@ import Sushi from "./Sushi";
 
 function SushiContainer({API}) {
 const [sushiList, setSushiList] = useState([])
-const [displayedSushi, setDisplayedSushi] = useState([])
+const [index, setIndex] = useState(0);
+const [sliceEnd, setSliceEnd] = useState(4);
+
+
+  
 
   useEffect(()=>{
     fetch(API)
     .then(res=>res.json())
-    .then(data=>setSushiList(data))
+    .then(data=>setSushiList(data.slice(index, sliceEnd)))
+
     },[]
     )
 
     //------full array of sushi elements
-const arrayOfSushiElements = sushiList.map((index=>{
-  return (
-    <Sushi key={index.id} data={index}/>
-  )
-}))
+
 
 //--------limits diplayed elements to 4
 let sliceSize=4;
 let indexStart=0;
-let fourSushi = [...arrayOfSushiElements].slice(indexStart, sliceSize)
+let sushiToDisplay=[...sushiList]
 
-function handleShowMoreSushi(data){
-  console.log(data);
+
+
+
+
+function handleShowMoreSushi(){
+  setIndex(()=>index+1);
+  setSliceEnd(()=>sliceEnd+1);
+  fetch(API)
+    .then(res=>res.json())
+    .then(data=>setSushiList(data.slice(index, sliceEnd)))
+  
 }
 
 
   return (
     <div className="belt">
-      {fourSushi}
-      <MoreButton />
+      {sushiList.map((index=>{
+  return (
+    <Sushi key={index.id} data={index}/>
+  )
+}))}
+      <MoreButton handleShowMoreSushi={handleShowMoreSushi}/>
     </div>
   );
 }
