@@ -4,7 +4,7 @@ import Sushi from "./Sushi";
 
 
 
-function SushiContainer({API, handleSale, plates, creditRemaining, allowPurchase}) {
+function SushiContainer({API, handleSale, allowPurchase}) {
 const [sushiList, setSushiList] = useState([])
 const [index, setIndex] = useState(0);
 const [sliceEnd, setSliceEnd] = useState(4);
