@@ -4,9 +4,17 @@ function Sushi({data, handleSale}) {
 const [eatenSushi, setEaten] = useState(true)
 
   
-  function handlePlateClick(){
-    setEaten(!eatenSushi);
+  function handlePlateClick(e){
+    
+    if (eatenSushi === false){
+
+      console.log('nothing')
+    }
+    else {
+      setEaten(false);
     handleSale(data.price);
+    }
+    
   }
 
 const {id, name, img_url, price, created_at}=data
