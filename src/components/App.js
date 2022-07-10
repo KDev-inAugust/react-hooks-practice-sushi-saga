@@ -8,6 +8,7 @@ const API = "http://localhost:3001/sushis";
 function App() {
   const [plates, setPlates] = useState([])
 
+  //------------handle the tally of plates with thier amoounts into an array that is given to table
   const plateArr=[...plates,];
 
   function handleSale(sale){
