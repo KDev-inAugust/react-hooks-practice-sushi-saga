@@ -1,11 +1,12 @@
 import React, {useState} from "react";
 
-function Sushi({data}) {
+function Sushi({data, handleSale}) {
 const [eatenSushi, setEaten] = useState(true)
 
   
   function handlePlateClick(){
-    setEaten(!eatenSushi)
+    setEaten(!eatenSushi);
+    handleSale(data.price);
   }
 
 const {id, name, img_url, price, created_at}=data
