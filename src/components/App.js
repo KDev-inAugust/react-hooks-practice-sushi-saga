@@ -16,11 +16,11 @@ function App() {
   //------------handle the tally of plates with thier amoounts into an array that is given to table
   const plateArr=[...plates,];
 
-  let creditRemaining=30
+  let credit=50
 
   
   function handleSale(sale){
-    if((plates.reduce((a,b)=>a+b,0)+sale)<=30){
+    if((plates.reduce((a,b)=>a+b,0)+sale)<=credit){
       plateArr.push(sale);
       setPlates(plateArr)
       console.log('app sale')
@@ -31,8 +31,8 @@ function App() {
   
   return (
     <div className="app">
-      <SushiContainer API={API} handleSale={handleSale} plates={plates} />
-      <Table plates={plates} creditRemaining={creditRemaining} />
+      <SushiContainer API={API} handleSale={handleSale} plates={plates} credit={credit} />
+      <Table plates={plates} credit={credit} />
     </div>
   );
 }

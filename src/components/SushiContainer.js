@@ -4,7 +4,7 @@ import Sushi from "./Sushi";
 
 
 
-function SushiContainer({API, handleSale, plates}) {
+function SushiContainer({API, handleSale, plates, credit}) {
 const [sushiList, setSushiList] = useState([])
 const [index, setIndex] = useState(0);
 const [sliceEnd, setSliceEnd] = useState(4);
@@ -29,7 +29,7 @@ function handleShowMoreSushi(){
     <div className="belt">
       {sushiList.map((index=>{
   return (
-    <Sushi key={index.id} data={index} handleSale={handleSale} plates={plates} />
+    <Sushi key={index.id} data={index} handleSale={handleSale} plates={plates} credit={credit}/>
   )
   }))}
       <MoreButton handleShowMoreSushi={handleShowMoreSushi}/>

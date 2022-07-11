@@ -1,6 +1,6 @@
 import React from "react";
 
-function Table({ plates = [], creditRemaining}) {
+function Table({ plates = [], credit}) {
   
 
   // renders an empty plate for every element in the array
@@ -16,11 +16,11 @@ let tallyDollarAmount = plates.reduce((a,b)=>a+b,0);
 
 function creditBalance () {
   
-  if (creditRemaining-tallyDollarAmount>0){
-  creditRemaining=creditRemaining - tallyDollarAmount;
-  return creditRemaining
+  if (credit-tallyDollarAmount>0){
+  credit=credit- tallyDollarAmount;
+  return credit
 }
-else creditRemaining= 0;}
+else credit= 0;}
 
 creditBalance();
 
@@ -30,7 +30,7 @@ creditBalance();
   return (
     <>
       <h1 className="remaining">
-        You have: ${creditRemaining} remaining!
+        You have: ${credit} remaining!
       </h1>
       <div className="table">
         <div className="stack">{emptyPlates}</div>

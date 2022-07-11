@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-function Sushi({data, handleSale, plates}) {
+function Sushi({data, handleSale, plates, credit}) {
 const [eatenSushi, setEaten] = useState(true)
 
 
@@ -13,7 +13,7 @@ let reducedPlates=plates.reduce((a,b)=>a+b,0)
 
     }
 
-    else if(reducedPlates+data.price<=30) {
+    else if(reducedPlates+data.price<=credit) {
       setEaten(false);
     handleSale(data.price);
     }
