@@ -11,8 +11,8 @@ function App() {
  
 
   const [plates, setPlates] = useState([])
-  const [allowPurchase, setAllowPurchase] = useState(true)
   
+
   //------------handle the tally of plates with thier amoounts into an array that is given to table
   const plateArr=[...plates,];
 
@@ -23,21 +23,15 @@ function App() {
     if((plates.reduce((a,b)=>a+b,0)+sale)<=30){
       plateArr.push(sale);
       setPlates(plateArr)
+      console.log('app sale')
       
     }
-    else {
-    setAllowPurchase(false)
-    console.log(allowPurchase)
-      
-  }
+   
   }
   
-
-  
-
   return (
     <div className="app">
-      <SushiContainer API={API} handleSale={handleSale} plates={plates} allowPurchase={allowPurchase}/>
+      <SushiContainer API={API} handleSale={handleSale} plates={plates} />
       <Table plates={plates} creditRemaining={creditRemaining} />
     </div>
   );
